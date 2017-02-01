@@ -9,30 +9,30 @@ const List = (props) => {
 			<ReactCSSTransitionGroup 
 			className='item-list'
 			component='div'
-			transitionName="zoom"
+			transitionName='drop'
 			transitionEnterTimeout={250}
 	      	transitionLeaveTimeout={250}>
 				{items ?
-					items.map((item, i) => {
+					items.map((order, i) => {
 						return (
-							<Item item={item} key={i} onClick={clickedItem} />
+							<Order order={order} key={i} clickedItem={clickedItem} />
 						)
 					})
-					: <span style={{textAlign: 'center'}}>Loading {list}...</span>
+					: null
 				}
 			</ReactCSSTransitionGroup> 
 		</div>
 	)
 }
 
-const Item = (props) => {
-	const { item } = props
+const Order = (props) => {
+	const { order, clickedItem } = props
 	return (
-		<div className="item">
-			<p>id: {item.id}</p>
-			<p>name: {item.name}</p>
+		<div className='item'>
+			<p>id: {order.id}</p>
+			<p>name: {order.name}</p>
 			<ul>
-				{item.products.map((product) => {
+				{order.items.map((product) => {
 					<li>
 						{product.name}
 						{product.qty}
@@ -40,6 +40,8 @@ const Item = (props) => {
 					</li>
 				})}
 			</ul>
+			<button onClick={() => {clickedItem(order.id, order.state, false)}}>Back</button>
+			<button onClick={() => {clickedItem(order.id, order.state, true)}}>Next</button>
 		</div>
 	)
 }
