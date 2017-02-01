@@ -2,17 +2,20 @@ import React, { Component } from 'react'
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const List = (props) => {
-	const { items, list } = props
+	const { items, list, clickedItem } = props
 	return (
-		<div>
-			<ReactCSSTransitionGroup className='list'
+		<div className='list'>
+			<h2>{list}</h2>
+			<ReactCSSTransitionGroup 
+			className='item-list'
+			component='div'
 			transitionName="zoom"
 			transitionEnterTimeout={250}
 	      	transitionLeaveTimeout={250}>
 				{items ?
 					items.map((item, i) => {
 						return (
-							<Item item={item} key={i} />
+							<Item item={item} key={i} onClick={clickedItem} />
 						)
 					})
 					: <span style={{textAlign: 'center'}}>Loading {list}...</span>

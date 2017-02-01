@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
+import $ from 'jquery'
 
 import List from './components/list'
 import dummyOrders from './components/dummy'
+import utils from './utils'
 
 class OrderList extends Component {
 	constructor(props) {
@@ -11,19 +13,23 @@ class OrderList extends Component {
 	}
 
 	componentDidMount() {
-		const { orders } = this.props
+		let orders = utils.dictArrayByValueInObj(dummyOrders, 'state')
 		this.setState({ orders })
 	}
 
 	render() {
 		const { orders } = this.state
 		return (
-			<div id='order-list'>
-				<List items={orders} list='new orders' />
-				<List items={orders} list='processing orders' />
-				<List items={orders} list='done orders' />
+			<div className='lists'>
+				<List items={orders.new} list='New Orders' clickedItem={this.clickedItem} />
+				<List items={orders.processing} list='Processing Orders' />
+				<List items={orders.done} list='Done Orders' />
 			</div>
 		)
+	}
+
+	clickedItem() {
+		console.log('yo');
 	}
 }
 

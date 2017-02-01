@@ -1,7 +1,8 @@
 const webpack = require('webpack'),
-path = require('path'),
-BundleTracker = require('webpack-bundle-tracker');
-utils = require('./build/utils')
+	path = require('path'),
+	BundleTracker = require('webpack-bundle-tracker'),
+	ExtractTextPlugin = require('extract-text-webpack-plugin'),
+	utils = require('./build/utils')
 
 module.exports = {
 	
@@ -24,19 +25,27 @@ module.exports = {
 				options: { presets: ['es2015', 'react'] }
 			}],
 		},
+		{
+			test: /\.scss$/,
+			use: ExtractTextPlugin.extract({
+				fallbackLoader: 'style-loader',
+				loader: 'css-loader!sass-loader'
+			})
+		},
 		],
 	},
 
 	plugins: [
-	new BundleTracker({filename: './webpack-stats.json'})
+		new BundleTracker({filename: './webpack-stats.json'}),
+		new ExtractTextPlugin('[name].css')
 	],
 
 	resolve: {
 		descriptionFiles: ['package.json'],
 		extensions: [
-			'.js',
-			'.css', '.scss', '.less',
-			'.json', '.yml'
+		'.js',
+		'.css', '.scss', '.less',
+		'.json', '.yml'
 		],
 	}
 }
