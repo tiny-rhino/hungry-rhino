@@ -1,11 +1,21 @@
 @import "_base";
 
+.user {
+	margin: 2vw auto;
+	display: block;
+	text-align: center;
+	input#user {
+		font-size: 1.4em;
+		padding: 5px;
+		border-radius: $radius;
+		border: $color solid 1px;
+	}
+}
 
 .product-list {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-around;
-
 
 	.product {
 		display: flex;
@@ -24,8 +34,6 @@
 		select {
 			font-size: 1.2em;
 		}
-
-
 	}
 }
 
