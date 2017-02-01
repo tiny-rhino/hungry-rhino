@@ -51,7 +51,7 @@ class OrderItem(models.Model):
     def save(self, *args, **kwargs):
         self.product_name = self.product.name
         self.item_price = self.product.price
-        self.sub_total = self.item_price * self.quantity
+        self.sub_total = self.item_price * int(self.quantity)
         return super().save(*args, **kwargs)
 
 
