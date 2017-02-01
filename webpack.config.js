@@ -3,18 +3,16 @@ path = require('path'),
 BundleTracker = require('webpack-bundle-tracker');
 utils = require('./build/utils')
 
-let entry = utils.compileEntry('./build/src/**/*.*', './web/static/')
-
-console.log(entry);
-
 module.exports = {
+	
 	context: __dirname,
 
-	entry,
+	entry: utils.compileEntry('./build/src/**/*.*'),
 
 	output: {
 		path: path.join(__dirname, 'rhinorun/static'),
-		filename: '[name]-[hash].js'
+		filename: '[name]-[hash].js',
+		publicPath: '/static/'
 	},
 
 	module: {
@@ -28,7 +26,9 @@ module.exports = {
 		},
 		],
 	},
+
 	plugins: [
-	new BundleTracker({filename: './webpack-stats.json'})
+		new BundleTracker({filename: './webpack-stats.json'})
 	]
+
 }
