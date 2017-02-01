@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 const user = document.querySelector('input#user')
-const qtySelectors = document.querySelector('.qty')
+const qtySelectors = document.querySelectorAll('.qty')
 const orderButton = document.querySelector('button[type=submit]')
 
 orderButton.addEventListener('click', (e) => {
@@ -9,7 +9,7 @@ orderButton.addEventListener('click', (e) => {
 		data: JSON.stringify(getOrder()),
 		csrfmiddlewaretoken: csrf
 	}, (res) => {
-		console.log(res);
+		window.location.href = '/order/'
 	})
 })
 
