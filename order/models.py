@@ -48,11 +48,11 @@ class OrderItem(models.Model):
     def __str__(self):
         return "{} - item {}".format(self.order, self.pk)
 
-    def save(self):
+    def save(self, *args, **kwargs):
         self.product_name = self.product.name
         self.item_price = self.product.price
         self.sub_total = self.item_price * self.quantity
-        return super().save()
+        return super().save(*args, **kwargs)
 
 
 def update_total(sender, instance, **kwargs):
