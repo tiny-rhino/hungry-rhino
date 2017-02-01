@@ -17,16 +17,17 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from order.views import OrderViewset
+from order.views import OrderViewSet
+from product.views import ProductListView
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
 
-router.register(r'orders', OrderViewset)
+router.register(r'orders', OrderViewSet)
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
-    url(r'^$', TemplateView.as_view(template_name="home.html")),
+    url(r'^$', ProductListView.as_view(), name='home'),
     url(r'^order-list$', TemplateView.as_view(template_name="order-list.html")),
 ]
