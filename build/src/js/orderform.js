@@ -1,15 +1,25 @@
 import $ from 'jquery'
 
+
+$.ajaxSetup({
+});
+
 const user = document.querySelector('input#user')
 const qtySelectors = document.querySelectorAll('.qty')
 const orderButton = document.querySelector('button[type=submit]')
 
 orderButton.addEventListener('click', (e) => {
-	$.post('api/orders/', {
-		data: JSON.stringify(getOrder()),
-		csrfmiddlewaretoken: csrf
-	}, (res) => {
-		window.location.href = '/order/'
+	let data = JSON.stringify(getOrder())
+	$.ajax({
+		url:'api/orders/',
+		data,
+		beforeSend: (xhr, settings) => {
+			xhr.setRequestHeader("X-CSRFToken", csrf)
+		},
+		success: (res) => {
+			let id = res.pop().id
+			window.location.href = '/order/' + id
+		}
 	})
 })
 
@@ -18,7 +28,6 @@ const getOrder = () => {
 		user: user.value,
 		items: getProducts()
 	}
-	console.log(order);
 	return order
 }
 
@@ -26,7 +35,7 @@ const getProducts = () => {
 	let products = []
 	Array.from(qtySelectors).map((qty) => {
 		if (qty.value != 0) {
-			let name = qty.parentNode.parentNode.querySelector('.name').innerText
+			let name = qty.parentNode.querySelector('.name').innerText
 			products.push({name, quantity: qty.value})
 		}
 	})
