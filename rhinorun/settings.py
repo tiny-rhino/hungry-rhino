@@ -41,7 +41,20 @@ INSTALLED_APPS = [
 
     # Third party
     'webpack_loader',
+    'channels',
+    'django_extensions',
+
+    # Our apps
+    'order',
+    'product',
 ]
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "asgiref.inmemory.ChannelLayer",
+        "ROUTING": "rhinorun.routing.routing",
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
