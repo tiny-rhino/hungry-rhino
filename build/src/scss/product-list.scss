@@ -1,0 +1,36 @@
+@import "_base";
+
+
+.product-list {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-around;
+
+
+	.product {
+		display: flex;
+		flex-flow: column wrap;
+		justify-content: center;
+		align-items: center;
+		border: 2px #eee solid;
+		border-radius: $radius;
+		padding: 2vw;
+		margin: 2vw;
+		box-shadow: 2px 2px 2px rgba(#000, .2);
+
+		img {
+			max-width: 400px;
+		}
+		select {
+			font-size: 1.2em;
+		}
+
+
+	}
+}
+
+button {
+	min-width: 200px;
+	margin: 0 auto;
+	display: block;
+}

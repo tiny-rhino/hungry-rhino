@@ -1,0 +1,19 @@
+$color: #4A89CF;
+$color-2: white;
+$radius: 3px;
+
+html, body { margin: 0; font-family: 'Roboto' }
+
+button {
+	padding: 10px 25px;
+	font-size: 1.2em;
+	background: $color;
+	color: $color-2;
+	border: 1px solid $color;
+	border-radius: $radius;
+	&:hover {
+		background: $color-2;
+		color: $color;
+		cursor: pointer;
+	}
+}

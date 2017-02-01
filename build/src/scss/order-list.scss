@@ -1,8 +1,4 @@
-$color: #4A89CF;
-$color-2: white;
-$radius: 3px;
-
-html, body { margin: 0; font-family: 'Roboto' }
+@import "_base";
 
 #order-list {
 	.lists {

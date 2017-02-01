@@ -2,11 +2,34 @@
 {% load render_bundle from webpack_loader %}
 
 {% block head %}
+{% render_bundle 'product-list' %}
 {% endblock %}
 
 {% block content %}
-{% for product in products %}
-	{{product.name}}
-	{{product.price}}
-{% endfor %}
+<label for="user">
+Name:
+	<input type="text" id="user" />
+</label>
+<div class="product-list">
+	{% for product in products %}
+	<div class="product">
+		<img src="media/{{product.image}}" alt="{{product.name}}">
+		<h2 class="name">{{product.name}}</h2>
+		<span class="price">{{product.price}}kr</span>
+		<select class="qty">
+			<option value="0">0</option>
+			<option value="1">1</option>
+			<option value="2">2</option>
+			<option value="3">3</option>
+			<option value="4">4</option>
+			<option value="5">5</option>
+		</select>
+	</div>
+	{% endfor %}
+</div>
+<button type='submit'>Order</button>
+<script type="text/javascript">
+	var csrf = '{{ csrf_token }}'
+</script>
+{% render_bundle 'orderform' %}
 {% endblock %}

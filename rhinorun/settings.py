@@ -142,6 +142,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "rhinorun/static"),
 ]
 
+# Media files (uploaded via django admin)
+MEDIA_ROOT = os.path.join(PROJECT_ROOT, "media")
+
+MEDIA_URL = '/media/'
+
 # Webpack config
 WEBPACK_LOADER = {
     'DEFAULT': {

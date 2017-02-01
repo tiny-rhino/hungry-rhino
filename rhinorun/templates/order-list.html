@@ -10,14 +10,7 @@
 <div id='order-list'></div>
 <script type="text/javascript">
 	socket = new WebSocket("ws://" + window.location.host + "/dashboard/");
-	if (socket.readyState == WebSocket.OPEN) socket.onopen();
-socket.onmessage = function(e) {
-   console.log(JSON.parse(e.data));
-}
-socket.onopen = function() {
-    
-   socket.send(JSON.stringify({}))
-}
+	if (socket.readyState == WebSocket.OPEN) socket.onopen()
 </script>
 {% render_bundle 'orderlist' %}
 {% endblock %}

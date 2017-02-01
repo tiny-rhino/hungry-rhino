@@ -22,7 +22,7 @@ module.exports.dictArrayByValueInObj = (arr, key) => {
 	getValueTypesInObjs(arr, key).map((value) => {
 		let objectsOfValue = getObjectsWithValue(arr, key, value)
 		if (obj[value]) obj[value] = []
-		Object.assign(obj, { [value]: objectsOfValue })
+			Object.assign(obj, { [value]: objectsOfValue })
 	})
 	return obj
 }

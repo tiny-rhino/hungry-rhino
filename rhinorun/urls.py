@@ -21,6 +21,10 @@ from order.views import OrderViewSet
 from product.views import ProductListView
 from rest_framework.routers import DefaultRouter
 
+from django.conf import settings
+from django.views.static import serve
+
+
 router = DefaultRouter()
 
 router.register(r'orders', OrderViewSet)
@@ -30,4 +34,7 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^$', ProductListView.as_view(), name='home'),
     url(r'^order-list$', TemplateView.as_view(template_name="order-list.html")),
+    url(r'^media/(?P<path>.*)$', serve, {
+        'document_root': settings.MEDIA_ROOT,
+    }),
 ]
