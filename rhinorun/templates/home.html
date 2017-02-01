@@ -1,0 +1,11 @@
+{% extends "_base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+{% endblock %}
+{% endblock %
+
+{% block content %}
+
+{% render_bundle 'index' 'js' %}
+{% endblock %}
