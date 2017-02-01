@@ -7,7 +7,7 @@ module.exports = {
 	
 	context: __dirname,
 
-	entry: utils.compileEntry('./build/src/**/*.*'),
+	entry: utils.compileEntry('./build/src/*/*.*'),
 
 	output: {
 		path: path.join(__dirname, 'rhinorun/static'),
@@ -21,14 +21,22 @@ module.exports = {
 			test: /\.js$/,
 			use: [{
 				loader: 'babel-loader',
-				options: { presets: ['es2015'] }
+				options: { presets: ['es2015', 'react'] }
 			}],
 		},
 		],
 	},
 
 	plugins: [
-		new BundleTracker({filename: './webpack-stats.json'})
-	]
+	new BundleTracker({filename: './webpack-stats.json'})
+	],
 
+	resolve: {
+		descriptionFiles: ['package.json'],
+		extensions: [
+			'.js',
+			'.css', '.scss', '.less',
+			'.json', '.yml'
+		],
+	}
 }

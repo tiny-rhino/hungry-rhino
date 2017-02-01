@@ -1,15 +1,19 @@
 {
   "private": true,
   "scripts": {
-  	"clean": "rm rhinorun/static/*",
-  	"dev": "webpack --watch",
-  	"build": "webpack -p"
+    "clean": "rm rhinorun/static/*",
+    "dev": "webpack --watch",
+    "build": "webpack -p"
   },
   "devDependencies": {
     "babel-core": "^6.22.1",
     "babel-loader": "^6.2.10",
     "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
     "glob": "^7.1.1",
+    "react": "^15.4.2",
+    "react-addons-css-transition-group": "^15.4.2",
+    "react-dom": "^15.4.2",
     "webpack": "^2.2.1",
     "webpack-bundle-tracker": "^0.2.0"
   }

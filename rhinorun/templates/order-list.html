@@ -1,0 +1,13 @@
+{% extends "_base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+
+{% endblock %}
+{% endblock %
+
+{% block content %}
+<div id='order-list'></div>
+
+{% render_bundle 'orderlist' %}
+{% endblock %}

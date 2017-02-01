@@ -1,1 +1,1 @@
-console.log('this works');
+document.write('asdf')
