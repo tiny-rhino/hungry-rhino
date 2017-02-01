@@ -8,7 +8,7 @@ module.exports = {
 	
 	context: __dirname,
 
-	entry: utils.compileEntry('./build/src/*/*.*'),
+	entry: utils.compileEntry('./build/src/*/!(_)*.*'),
 
 	output: {
 		path: path.join(__dirname, 'rhinorun/static'),
