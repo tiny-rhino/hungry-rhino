@@ -28,6 +28,7 @@ const List = (props) => {
 const Order = (props) => {
 	const { order, clickedItem } = props
 	console.log(order);
+	console.log(order.state != 'done');
 	return (
 		<div className='item'>
 			{order.state == 'done' ? 
@@ -41,17 +42,11 @@ const Order = (props) => {
 				})}
 			<div className='actions'>
 				{order.state != 'new' ? 
-					<button 
-						onClick={ () => {
-							clickedItem(order.id, order.state, [order.state != 'new'])}
-						}>
-						&#9664;
-					</button> : null 
+					<button onClick={ () => {clickedItem(order.id, order.state, true)}}>&#9664; </button> : null 
 				}
 				{order.state != 'done' ?
-					<button onClick={() => {clickedItem(order.id, order.state, [order.state != 'done'])}}>&#9654;</button> : null
+					<button onClick={() => {clickedItem(order.id, order.state, false)}}>&#9654;</button> : null
 				}
-				
 			</div>
 		</div>
 	)

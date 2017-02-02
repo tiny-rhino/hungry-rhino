@@ -30,6 +30,7 @@ class OrderList extends Component {
 		let direction = forward ? 1 : -1
 		let index = status.indexOf(state) + (direction * 1); 
 		let newState = status[index]
+		console.log(newState);
 		socket.send(JSON.stringify({ id, state: newState }))
 	}
 
