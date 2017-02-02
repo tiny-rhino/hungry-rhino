@@ -16,11 +16,11 @@ class OrderList extends Component {
 	componentDidMount() {
 		socket.onmessage = (res) => {
 			let data = JSON.parse(res.data)
-			this.handleData(data)
+			this.handleOrders(data)
 		}
 	}
 
-	handleData(data) {
+	handleOrders(data) {
 		let orders = utils.dictArrayByValueInObj(data, 'state')
 		this.setState({ orders, loading: false })
 	}
