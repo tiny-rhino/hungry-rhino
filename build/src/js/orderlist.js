@@ -6,8 +6,7 @@ import List from './components/list'
 import dummyOrders from './components/dummy'
 import utils from './tools/utils'
 
-// init socket
-let socket = new WebSocket("ws://" + window.location.host + "/dashboard/");
+let socket = new WebSocket('ws://' + window.location.host + '/dashboard/')
 
 class OrderList extends Component {
 	constructor(props) {

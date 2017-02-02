@@ -6,7 +6,7 @@
 
 {% block content %}
 <h1>Order for {{order.user}} (#{{order.id}})</h1>
-<p>State: {{order.state}}</p>
+<p>State: <span id="state">{{order.state}}</span></p>
 
 <p>Total: {{order.total}}</p>
 <div class="products">
@@ -14,5 +14,8 @@
 	<p>You bought {{item.quantity}} {{item.product.name}}{% if item.quantity > 1 %}s{% endif %} for {{item.sub_total}}kr</p>
 {% endfor %}
 </div>
-
+<script type="text/javascript">
+	var orderId = '{{ order.id }}'
+</script>
+{% render_bundle 'order' %}
 {% endblock %}
