@@ -1,9 +1,5 @@
 import $ from 'jquery'
 
-
-$.ajaxSetup({
-});
-
 const user = document.querySelector('input#user')
 const qtySelectors = document.querySelectorAll('.qty')
 const orderButton = document.querySelector('button[type=submit]')
@@ -11,13 +7,15 @@ const orderButton = document.querySelector('button[type=submit]')
 orderButton.addEventListener('click', (e) => {
 	let data = JSON.stringify(getOrder())
 	$.ajax({
+		type: 'POST',
 		url:'api/orders/',
 		data,
+		contentType: 'application/json',
 		beforeSend: (xhr, settings) => {
 			xhr.setRequestHeader("X-CSRFToken", csrf)
 		},
 		success: (res) => {
-			let id = res.pop().id
+			let id = res.id
 			window.location.href = '/order/' + id
 		}
 	})

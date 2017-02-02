@@ -3,9 +3,11 @@ import { render } from 'react-dom'
 import NotificationBar from './components/notification-bar'
 import { getOrder } from './tools/utils'
 
+const notificationBar = document.getElementById('notification-bar')
+
 render(
-	<NotificationBar el={document.getElementById('notification-bar')} />,
-	document.getElementById('notification-bar')
+	<NotificationBar el={notificationBar} />,
+	notificationBar
 )
 
 let socket = new WebSocket('ws://' + window.location.host + '/dashboard/')
