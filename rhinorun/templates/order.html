@@ -2,20 +2,24 @@
 {% load render_bundle from webpack_loader %}
 
 {% block head %}
+{% render_bundle 'order' %}
 {% endblock %}
 
 {% block content %}
-<h1>Order for {{order.user}} (#{{order.id}})</h1>
-<p>State: <span id="state">{{order.state}}</span></p>
+<div id="notification-bar"></div>
+<div class="order">
+	<h1>Order for {{order.user}} (#{{order.id}})</h1>
+	<p>State: <span id="state" class="{{order.state}}">{{order.state}}</span></p>
 
-<p>Total: {{order.total}}</p>
-<div class="products">
-{% for item in order_items %}
-	<p>You bought {{item.quantity}} {{item.product.name}}{% if item.quantity > 1 %}s{% endif %} for {{item.sub_total}}kr</p>
-{% endfor %}
+	<p><strong>Total: {{order.total}}kr</strong></p>
+	<div class="products">
+		{% for item in order_items %}
+		<p>You bought {{item.quantity}} {{item.product.name}}{% if item.quantity > 1 %}s{% endif %} for {{item.sub_total}}kr</p>
+		{% endfor %}
+	</div>
 </div>
 <script type="text/javascript">
 	var orderId = '{{ order.id }}'
 </script>
-{% render_bundle 'order' %}
+{% render_bundle 'order-status' %}
 {% endblock %}

@@ -26,3 +26,11 @@ module.exports.dictArrayByValueInObj = (arr, key) => {
 	})
 	return obj
 }
+
+module.exports.getOrder = (orders, id) => {
+	let obj = {}
+	orders.filter((order) => {
+		if (order.id == id) Object.assign(obj, order)
+	})
+	return obj
+}

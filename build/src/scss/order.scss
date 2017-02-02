@@ -1,0 +1,56 @@
+@import "_base";
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 50vh;
+}
+#notification-bar {
+	visibility: hidden;
+	opacity: 0;
+	width: 100%;
+	position: absolute;
+	min-height: 60px;
+	top: 0;
+	left: 0;
+	color: white;
+	font-size: 1.2em;
+	transition: 250ms all;
+	> div {
+		padding: 10px;
+		text-align: center;
+	}
+}
+.order {
+	display: flex;
+	flex-flow: column wrap;
+	padding: 5vw;
+	background: #eee;
+	border: $color dashed 3px;
+	margin-top: 200px;
+
+	#state {
+		padding: 1vw;
+		color: white;
+		border-radius: $radius;
+		transform: 250ms all;
+	}
+}
+
+.new {
+	background: blue;
+}
+.processing {
+	background: orange;
+}
+.done {
+	background: green;
+}
+.removed {
+	background: red;
+}
+
+.visible {
+	visibility: visible !important;
+	opacity: 1 !important;
+}
