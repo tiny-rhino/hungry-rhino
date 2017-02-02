@@ -3,13 +3,12 @@ import { render } from 'react-dom'
 import $ from 'jquery'
 
 import List from './components/list'
-import dummyOrders from './components/dummy'
 import utils from './tools/utils'
 
 let socket = new WebSocket('ws://' + window.location.host + '/dashboard/')
 
 class OrderList extends Component {
-	constructor(props) {
+	constructor() {
 		super()
 		this.state = { orders: [], status: ['new', 'processing', 'done', 'removed'], loading: true }
 	}
@@ -38,15 +37,21 @@ class OrderList extends Component {
 		const { orders } = this.state
 		return (
 			<div className='lists'>
-				<List items={orders.new} list='New Orders' clickedItem={this.updateState.bind(this)} />
-				<List items={orders.processing} list='Processing Orders' clickedItem={this.updateState.bind(this)} />
-				<List items={orders.done} list='Done Orders' clickedItem={this.updateState.bind(this)} />
+				<List items={orders.new} 
+					list='New Orders' 
+					clickedItem={this.updateState.bind(this)} />
+				<List items={orders.processing} 
+					list='Processing Orders' 
+					clickedItem={this.updateState.bind(this)} />
+				<List items={orders.done} 
+					list='Done Orders' 
+					clickedItem={this.updateState.bind(this)} />
 			</div>
 		)
 	}
 }
 
 render(
-	<OrderList orders={dummyOrders} />,
+	<OrderList />,
 	document.getElementById('order-list')
 )

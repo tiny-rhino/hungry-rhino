@@ -13,10 +13,10 @@
 			margin: 2vw;
 			transition: 250ms all;
 			.item-list {
-				background: $color;
 				border-radius: $radius;
 				box-shadow: 2px 2px 2px rgba(#000, .25);
 				padding: 2vw;
+				background: $color;
 				.item {
 					border: 1px solid $color-2;
 					margin: 10px 0;
@@ -24,10 +24,29 @@
 					box-shadow: 2px 2px 2px rgba(#000, .25);
 					background: $color-2;
 					border-radius: $radius;
+					position: relative;
+					.close {
+						border-radius: 50%;
+						color: white;
+						background: #eee;
+						width: 1em;
+						height: 1em;
+						position: absolute;
+						right: 10px;
+						top: 10px;
+						display: flex;
+						justify-content: center;
+						line-height: 1em;
+						cursor: pointer;
+						&:hover {
+							background: red
+						}
+					}
 					.actions {
 						display: flex;
-						justify-content: space-between;
+						justify-content: flex-end;
 						button {
+							margin: 0 5px;
 							font-size: 1em;
 							padding: 5px 10px;
 						}

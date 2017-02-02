@@ -30,6 +30,9 @@ const Order = (props) => {
 	console.log(order);
 	return (
 		<div className='item'>
+			{order.state == 'done' ? 
+				<div className='close' onClick={() => {clickedItem(order.id, order.state, true)}}>x</div> : null
+			}
 			<p>Order from {order.user} (#{order.id})</p>
 				{order.items.map((product) => {
 					return (
@@ -37,8 +40,13 @@ const Order = (props) => {
 					)
 				})}
 			<div className='actions'>
-				<button onClick={() => {clickedItem(order.id, order.state, false)}}>Back</button>
-				<button onClick={() => {clickedItem(order.id, order.state, true)}}>Next</button>
+				{order.state != 'new' ? 
+					<button onClick={() => {clickedItem(order.id, order.state, false)}}>&#9664;</button> : null 
+				}
+				{order.state != 'done' ?
+					<button onClick={() => {clickedItem(order.id, order.state, true)}}>&#9654;</button> : null
+				}
+				
 			</div>
 		</div>
 	)
