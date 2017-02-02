@@ -17,7 +17,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
-from order.views import OrderViewSet
+from order.views import OrderViewSet, OrderView
 from product.views import ProductListView
 from rest_framework.routers import DefaultRouter
 
@@ -34,6 +34,7 @@ urlpatterns = [
     url(r'^api/', include(router.urls)),
     url(r'^$', ProductListView.as_view(), name='home'),
     url(r'^order-list$', TemplateView.as_view(template_name="order-list.html")),
+    url(r'^order/(?P<id>\d+)/$', OrderView.as_view(), name='order'),
     url(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT,
     }),

@@ -1,0 +1,18 @@
+{% extends "_base.html" %}
+{% load render_bundle from webpack_loader %}
+
+{% block head %}
+{% endblock %}
+
+{% block content %}
+<h1>Order for {{order.user}} (#{{order.id}})</h1>
+<p>State: {{order.state}}</p>
+
+<p>Total: {{order.total}}</p>
+<div class="products">
+{% for item in order_items %}
+	<p>You bought {{item.quantity}} {{item.product.name}}{% if item.quantity > 1 %}s{% endif %} for {{item.sub_total}}kr</p>
+{% endfor %}
+</div>
+
+{% endblock %}
