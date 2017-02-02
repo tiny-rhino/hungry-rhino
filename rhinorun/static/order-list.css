@@ -33,10 +33,16 @@ button {
       #order-list .lists .list .item-list .item {
         border: 1px solid white;
         margin: 10px 0;
-        padding: 0 10px;
+        padding: 1vw 2vw;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.25);
         background: white;
         border-radius: 3px; }
+        #order-list .lists .list .item-list .item .actions {
+          display: flex;
+          justify-content: space-between; }
+          #order-list .lists .list .item-list .item .actions button {
+            font-size: 1em;
+            padding: 5px 10px; }
         #order-list .lists .list .item-list .item.drop-enter {
           opacity: 0;
           transform: translateY(-10px);

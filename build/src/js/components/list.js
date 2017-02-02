@@ -27,21 +27,19 @@ const List = (props) => {
 
 const Order = (props) => {
 	const { order, clickedItem } = props
+	console.log(order);
 	return (
 		<div className='item'>
-			<p>id: {order.id}</p>
-			<p>name: {order.name}</p>
-			<ul>
+			<p>Order from {order.user} (#{order.id})</p>
 				{order.items.map((product) => {
-					<li>
-						{product.name}
-						{product.qty}
-						{product.price}
-					</li>
+					return (
+						<p>{product.quantity} x {product.name}</p>
+					)
 				})}
-			</ul>
-			<button onClick={() => {clickedItem(order.id, order.state, false)}}>Back</button>
-			<button onClick={() => {clickedItem(order.id, order.state, true)}}>Next</button>
+			<div className='actions'>
+				<button onClick={() => {clickedItem(order.id, order.state, false)}}>Back</button>
+				<button onClick={() => {clickedItem(order.id, order.state, true)}}>Next</button>
+			</div>
 		</div>
 	)
 }
