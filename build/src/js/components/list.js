@@ -41,10 +41,15 @@ const Order = (props) => {
 				})}
 			<div className='actions'>
 				{order.state != 'new' ? 
-					<button onClick={() => {clickedItem(order.id, order.state, false)}}>&#9664;</button> : null 
+					<button 
+						onClick={ () => {
+							clickedItem(order.id, order.state, [order.state != 'new'])}
+						}>
+						&#9664;
+					</button> : null 
 				}
 				{order.state != 'done' ?
-					<button onClick={() => {clickedItem(order.id, order.state, true)}}>&#9654;</button> : null
+					<button onClick={() => {clickedItem(order.id, order.state, [order.state != 'done'])}}>&#9654;</button> : null
 				}
 				
 			</div>
