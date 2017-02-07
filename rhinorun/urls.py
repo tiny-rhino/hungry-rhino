@@ -33,7 +33,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^$', ProductListView.as_view(), name='home'),
-    url(r'^order-list$', TemplateView.as_view(template_name="order-list.html")),
+    url(r'^order-list/$', TemplateView.as_view(template_name="order-list.html")),
     url(r'^order/(?P<id>\d+)/$', OrderView.as_view(), name='order'),
     url(r'^media/(?P<path>.*)$', serve, {
         'document_root': settings.MEDIA_ROOT,
